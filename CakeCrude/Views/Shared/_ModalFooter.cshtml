@@ -1,0 +1,11 @@
+﻿@model CakeCrude.Models.ModalFooter
+
+<div class="modal-footer">
+    <button data-dismiss="modal" id="@Model.CancelButtonID" class="btn btn-success" type="button">@Model.CancelButtonText</button>
+    @if (!Model.OnlyCancelButton)
+    {
+        <button class="btn btn-danger" id="@Model.SubmitButtonID" type="submit">
+            @Model.SubmitButtonText
+        </button>
+    }
+</div>

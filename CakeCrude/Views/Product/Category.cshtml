@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Category";
+}
+
+@model IEnumerable<CakeCrude.Models.ProductViewModel>
+@using CakeCrude.Models
+@using CakeCrude.Code
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Cakes</div>
+    <div class="panel-body">
+        <div class="top-buffer"></div>
+
+        <div class="input-group-prepend">
+            <div class="form-group row">
+                <lable typeof="cakename" class="col-sm-2 col-form-label"><p class="f">Name Your category</p></lable>
+                </div>
+                <input type="text" class="form-control" id="cakename" />
+            </div>
+
+            <div class="top-buffer"></div>
+            <div class="btn-group">
+                <a id="createEditBookModal" data-toggle="modal" asp-action="AddEditProduct" data-target="#modal-action-product" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-plus"></i>  Add Cake
+                </a>
+            </div>
+            <div class="top-buffer"></div>
+
+        </div>
+</div>
