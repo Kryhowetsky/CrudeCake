@@ -31,6 +31,7 @@ namespace CakeCrude.Controllers
 
             });
 
+
             return View("Index", model);
         }
 
@@ -41,6 +42,8 @@ namespace CakeCrude.Controllers
             if (id.HasValue)
             {
                 Product product = _context.Set<Product>().SingleOrDefault(c => c.Id == id.Value);
+
+               
                 if (product != null)
                 {
                     model.Id = product.Id;
@@ -51,6 +54,13 @@ namespace CakeCrude.Controllers
                     model.CategoryId = product.CategoryId;
                 }
             }
+
+            var caterogies = _context.Set<Category>().ToList();
+            var categoriesViewModel = new List<CategoryViewModel>();
+            foreach (var category in caterogies)
+                categoriesViewModel.Add(new CategoryViewModel { Id = category.Id, Name = category.Name });
+            model.Categories = categoriesViewModel;
+
             return PartialView("~/Views/Product/_AddEditProduct.cshtml", model);
         }
 
@@ -103,12 +113,6 @@ namespace CakeCrude.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpGet]
-        //public IActionResult Category()
-        //{
-            
-
-        //    return View("Category", model);
-        //}
+        
     }
 }

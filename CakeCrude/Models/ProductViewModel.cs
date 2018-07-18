@@ -14,6 +14,7 @@ namespace CakeCrude.Models
         public DateTime Date { get; set; }
 
         public int CategoryId { get; set; }
+        public ICollection<CategoryViewModel> Categories { get; set; }
 
     }
 }
