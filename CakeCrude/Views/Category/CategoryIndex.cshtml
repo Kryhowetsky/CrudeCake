@@ -21,7 +21,7 @@
 
         <div class="top-buffer"></div>
         <div class="btn-group">
-            <a id="createEditBookModal" data-toggle="modal" asp-action="AddCategory" data-target="#modal-action-category" class="btn btn-primary">
+            <a id="createEditBookModal" data-toggle="modal" asp-action="AddEditCategory" data-target="#modal-action-category" class="btn btn-primary">
                 <i class="glyphicon glyphicon-plus"></i>  Add Category
             </a>
         </div>
@@ -42,7 +42,7 @@
                         <td>@Html.DisplayFor(modelItem => item.Name)</td>
 
                         <td>
-                            <a id="editCategoryModal" data-toggle="modal" asp-action="AddCategory" asp-route-id="@item.Id" data-target="#modal-action-category"
+                            <a id="editCategoryModal" data-toggle="modal" asp-action="AddEditCategory" asp-route-id="@item.Id" data-target="#modal-action-category"
                                class="btn btn-info">
                                 <i class="glyphicon glyphicon-pencil"></i>  Edit
                             </a>

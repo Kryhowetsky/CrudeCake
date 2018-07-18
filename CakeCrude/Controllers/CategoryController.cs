@@ -36,73 +36,55 @@ namespace CakeCrude.Controllers
 
         // GET: Category/Create
         [HttpGet]
-        public IActionResult AddCategory(long? id)
-        {
-            ProductViewModel model = new ProductViewModel();
-            Category category = _context.Set<Category>().SingleOrDefault(c => c.Id == id.Value);
-
-            if (category != null)
-            {
-                model.Id = category.Id;
-                model.Name = category.Name;
-            }
-              return PartialView("~/Views/Category/_AddCategory.cshtml");
-        }
-
-        // POST: Category/Create
-
-        [HttpPost]
-        public IActionResult AddCategory(long id, CategoryViewModel category)
-        {
-            _context.Add(category);
-            _context.SaveChanges();
-
-
-
-            return RedirectToAction("CategoryIndex");
-        }
-
-        // GET: Category/Edit/5
-        [HttpGet]
-        public IActionResult EditCategory(long? id)
+        public IActionResult AddEditCategory(long? id)
         {
             CategoryViewModel model = new CategoryViewModel();
             if (id.HasValue)
             {
-                Category category = _context.Set<Category>()
-                                       .SingleOrDefault(c => c.Id == id.Value);
+                Category category = _context.Set<Category>().SingleOrDefault(c => c.Id == id.Value);
+
 
                 if (category != null)
                 {
                     model.Id = category.Id;
                     model.Name = category.Name;
+
                 }
             }
-               
-            return PartialView("~/Views/Category/_EditCategory.cshtml", model);
+
+
+
+            return PartialView("~/Views/Category/_AddEditCategory.cshtml", model);
         }
 
-        // POST: Category/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditCategory(long? id,  CategoryViewModel model)
+        public IActionResult AddEditCategory(long? id, CategoryViewModel model)
         {
             try
             {
-
-
-                bool isNew = !id.HasValue;
-                Category category = isNew ? new Category
+                if (ModelState.IsValid)
                 {
-                    AddedDate = DateTime.UtcNow
-                } : _context.Set<Category>().SingleOrDefault(s => s.Id == id.Value);
+                    bool isNew = !id.HasValue;
+                    Category category = isNew ? new Category
+                    {
+                        AddedDate = DateTime.UtcNow
+                    } : _context.Set<Category>().SingleOrDefault(s => s.Id == id.Value);
+
+                    //category.Id = model.Id;
+                    category.Name = model.Name;
+
+                    if (isNew)
+                    {
+                        _context.Add(category);
+                    }
+                    _context.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
-            return RedirectToAction("CategoryIndex");
+            return RedirectToAction("Index");
         }
 
         // GET: Category/Delete/5
@@ -115,12 +97,12 @@ namespace CakeCrude.Controllers
 
         // POST: Category/Delete/5
         [HttpPost]
-         public IActionResult DeleteCategory(long id, IFormCollection collection)
+        public IActionResult DeleteCategory(long id, IFormCollection collection)
         {
             Category category = _context.Set<Category>().SingleOrDefault(c => c.Id == id);
             _context.Entry(category).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             _context.SaveChanges();
-            return RedirectToAction("CategoryIndex");
+            return RedirectToAction("Index");
         }
     }
 }
