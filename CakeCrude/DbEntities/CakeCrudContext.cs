@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using CakeCrude.Models;
 
 namespace CakeCrude.DbEntities
 {
@@ -13,6 +14,9 @@ namespace CakeCrude.DbEntities
             base.OnModelCreating(modelBuilder);
             new ProductMap(modelBuilder.Entity<Product>());
             new CategoryMap(modelBuilder.Entity<Category>());
+            new OrderCakeMap(modelBuilder.Entity<OrderCake>());
         }
+
+        public DbSet<CakeCrude.Models.OrderCakeViewModel> OrderCakeModel { get; set; }
     }
 }
