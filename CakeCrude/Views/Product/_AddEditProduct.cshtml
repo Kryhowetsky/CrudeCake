@@ -27,7 +27,7 @@
         <div class="form-group">
             <label asp-for="CategoryId" class="col-lg-3 col-sm-3 control-label"></label>
             <div class="col-lg-6">
-                <select class="col-lg-6 form-control">
+                <select class="col-lg-6 form-control" asp-for="CategoryId">
                     <option selected>Choose your category</option>
                     @foreach (var category in Model.Categories)
                     {

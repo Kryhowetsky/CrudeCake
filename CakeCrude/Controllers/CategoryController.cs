@@ -67,11 +67,12 @@ namespace CakeCrude.Controllers
                     bool isNew = !id.HasValue;
                     Category category = isNew ? new Category
                     {
-                        AddedDate = DateTime.UtcNow
+                        
                     } : _context.Set<Category>().SingleOrDefault(s => s.Id == id.Value);
 
-                    //category.Id = model.Id;
+                    category.Id = model.Id;
                     category.Name = model.Name;
+                    
 
                     if (isNew)
                     {
