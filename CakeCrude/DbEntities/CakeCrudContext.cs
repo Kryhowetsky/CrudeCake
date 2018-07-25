@@ -17,6 +17,6 @@ namespace CakeCrude.DbEntities
             new OrderCakeMap(modelBuilder.Entity<OrderCake>());
         }
 
-        public DbSet<CakeCrude.Models.OrderCakeViewModel> OrderCakeModel { get; set; }
+        
     }
 }

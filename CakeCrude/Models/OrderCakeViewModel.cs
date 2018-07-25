@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+
+using System;
 
 namespace CakeCrude.Models
 {
@@ -13,5 +12,6 @@ namespace CakeCrude.Models
         public long Phone { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using CakeCrude.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CakeCrude.Migrations
 {
     [DbContext(typeof(CakeCrudContext))]
-    partial class CakeCrudContextModelSnapshot : ModelSnapshot
+    [Migration("20180719114508_cakeorder")]
+    partial class cakeorder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +42,6 @@ namespace CakeCrude.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Comment");
-
-                    b.Property<DateTime>("Date");
 
                     b.Property<string>("Email")
                         .IsRequired();

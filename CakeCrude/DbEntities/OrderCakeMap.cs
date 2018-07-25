@@ -12,6 +12,7 @@ namespace CakeCrude.DbEntities
             entityBuilder.Property(t => t.Phone).IsRequired();
             entityBuilder.Property(t => t.Email).IsRequired();
             entityBuilder.Property(t => t.Comment);
+            entityBuilder.Property(t => t.Date);
         }
     }
 }
