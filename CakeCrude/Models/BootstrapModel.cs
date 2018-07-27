@@ -1,6 +1,5 @@
 ﻿using CakeCrude.Code;
 
-
 namespace CakeCrude.Models
 {
     public class BootstrapModel
@@ -9,6 +8,7 @@ namespace CakeCrude.Models
         public string AreaLabeledId { get; set; }
         public ModalSize Size { get; set; }
         public string Message { get; set; }
+
         public string ModalSizeClass
         {
             get
@@ -17,8 +17,10 @@ namespace CakeCrude.Models
                 {
                     case ModalSize.Small:
                         return "modal-sm";
+
                     case ModalSize.Large:
                         return "modal-lg";
+
                     case ModalSize.Medium:
                     default:
                         return "";

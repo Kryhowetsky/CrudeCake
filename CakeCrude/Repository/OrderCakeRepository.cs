@@ -1,5 +1,6 @@
 ﻿using CakeCrude.DbEntities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,11 @@ namespace CakeCrude.Repository
         {
             _dbSet.Add(order);
             _context.SaveChanges();
+        }
+
+        internal void SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }

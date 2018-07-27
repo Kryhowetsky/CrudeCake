@@ -13,6 +13,5 @@ namespace CakeCrude.Models
 
         public int CategoryId { get; set; }
         public ICollection<CategoryViewModel> Categories { get; set; }
-
     }
 }

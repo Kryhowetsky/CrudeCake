@@ -1,5 +1,4 @@
-﻿
-namespace CakeCrude.Models
+﻿namespace CakeCrude.Models
 {
     public class ModalHeader
     {

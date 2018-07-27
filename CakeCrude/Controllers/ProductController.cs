@@ -28,9 +28,7 @@ namespace CakeCrude.Controllers
                 Price = p.Price,
                 Date = p.Date,
                 CategoryId = p.CategoryId
-
             });
-
 
             return View("Index", model);
         }
@@ -43,7 +41,6 @@ namespace CakeCrude.Controllers
             {
                 Product product = _context.Set<Product>().SingleOrDefault(c => c.Id == id.Value);
 
-               
                 if (product != null)
                 {
                     model.Id = product.Id;
@@ -97,6 +94,7 @@ namespace CakeCrude.Controllers
             }
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult DeleteProduct(long id)
         {
@@ -104,6 +102,7 @@ namespace CakeCrude.Controllers
             string productName = product.Name;
             return PartialView("~/Views/Product/_DeleteProduct.cshtml", model: productName);
         }
+
         [HttpPost]
         public IActionResult DeleteProduct(long id, IFormCollection form)
         {
@@ -112,7 +111,5 @@ namespace CakeCrude.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
-
     }
 }

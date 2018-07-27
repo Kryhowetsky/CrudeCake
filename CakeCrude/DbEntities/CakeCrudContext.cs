@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CakeCrude.Models;
 
 namespace CakeCrude.DbEntities
 {
     public class CakeCrudContext : DbContext
     {
-        public CakeCrudContext(DbContextOptions<CakeCrudContext> options):base(options)
+        public CakeCrudContext(DbContextOptions<CakeCrudContext> options) : base(options)
         {
         }
 
@@ -15,8 +14,7 @@ namespace CakeCrude.DbEntities
             new ProductMap(modelBuilder.Entity<Product>());
             new CategoryMap(modelBuilder.Entity<Category>());
             new OrderCakeMap(modelBuilder.Entity<OrderCake>());
+            new FileMap(modelBuilder.Entity<File>());
         }
-
-        
     }
 }

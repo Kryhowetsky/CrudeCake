@@ -1,5 +1,3 @@
-using System;
-
 namespace CakeCrude.Models
 {
     public class ErrorViewModel

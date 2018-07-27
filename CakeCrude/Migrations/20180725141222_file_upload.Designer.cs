@@ -4,14 +4,16 @@ using CakeCrude.DbEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CakeCrude.Migrations
 {
     [DbContext(typeof(CakeCrudContext))]
-    partial class CakeCrudContextModelSnapshot : ModelSnapshot
+    [Migration("20180725141222_file_upload")]
+    partial class file_upload
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

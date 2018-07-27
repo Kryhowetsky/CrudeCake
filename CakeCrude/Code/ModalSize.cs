@@ -1,6 +1,4 @@
-﻿
-
-namespace CakeCrude.Code
+﻿namespace CakeCrude.Code
 {
     public enum ModalSize
     {

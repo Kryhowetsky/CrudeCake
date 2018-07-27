@@ -11,9 +11,6 @@ namespace CakeCrude.DbEntities
             entityBuilder.Property(t => t.Description).IsRequired();
             entityBuilder.Property(t => t.Price).IsRequired();
             entityBuilder.Property(t => t.Date);
-
-
-           
         }
     }
 }

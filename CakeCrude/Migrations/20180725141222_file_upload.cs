@@ -1,28 +1,38 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CakeCrude.Migrations
 {
-    public partial class cakeorder : Migration
+    public partial class file_upload : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "OrderCakeModel");
+
             migrationBuilder.CreateTable(
-                name: "OrderCake",
+                name: "File",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
-                    Surname = table.Column<string>(nullable: false),
-                    Phone = table.Column<long>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Comment = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Path = table.Column<string>(nullable: true),
+                    ParentId = table.Column<int>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    AddedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderCake", x => x.Id);
+                    table.PrimaryKey("PK_File", x => x.Id);
                 });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "File");
 
             migrationBuilder.CreateTable(
                 name: "OrderCakeModel",
@@ -30,25 +40,16 @@ namespace CakeCrude.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Surname = table.Column<string>(nullable: true),
-                    Phone = table.Column<long>(nullable: false),
+                    Comment = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    Comment = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Phone = table.Column<long>(nullable: false),
+                    Surname = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderCakeModel", x => x.Id);
                 });
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "OrderCake");
-
-            migrationBuilder.DropTable(
-                name: "OrderCakeModel");
         }
     }
 }

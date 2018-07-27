@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CakeCrude.DbEntities;
+﻿using CakeCrude.DbEntities;
 using CakeCrude.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CakeCrude.Controllers
 {
     public class CategoryController : Controller
     {
-
         private CakeCrudContext _context;
 
         public CategoryController(CakeCrudContext context)
@@ -32,8 +30,6 @@ namespace CakeCrude.Controllers
             return View("CategoryIndex", model);
         }
 
-
-
         // GET: Category/Create
         [HttpGet]
         public IActionResult AddEditCategory(long? id)
@@ -43,16 +39,12 @@ namespace CakeCrude.Controllers
             {
                 Category category = _context.Set<Category>().SingleOrDefault(c => c.Id == id.Value);
 
-
                 if (category != null)
                 {
                     model.Id = category.Id;
                     model.Name = category.Name;
-
                 }
             }
-
-
 
             return PartialView("~/Views/Category/_AddEditCategory.cshtml", model);
         }
@@ -67,12 +59,10 @@ namespace CakeCrude.Controllers
                     bool isNew = !id.HasValue;
                     Category category = isNew ? new Category
                     {
-                        
                     } : _context.Set<Category>().SingleOrDefault(s => s.Id == id.Value);
 
                     category.Id = model.Id;
                     category.Name = model.Name;
-                    
 
                     if (isNew)
                     {
